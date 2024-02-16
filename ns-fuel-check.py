@@ -4,6 +4,31 @@ from google.oauth2.credentials import Credentials
 from email.mime.text import MIMEText
 import base64
 import os
+import requests
+from bs4 import BeautifulSoup
+from datetime import datetime
+import gspread
+from google.oauth2.service_account import Credentials
+import smtplib
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+
+# Google Sheets setup
+scopes = ["https://www.googleapis.com/auth/spreadsheets", "https://www.googleapis.com/auth/drive"]
+creds = Credentials.from_service_account_file("path_to_your_service_account_credentials.json", scopes=scopes)
+client = gspread.authorize(creds)
+sheet = client.open("Your Google Sheet Name").sheet1
+
+# Function to scrape gas price
+def scrape_gas_price():
+    url = "https://nsuarb.novascotia.ca/mandates/gasoline-diesel-pricing/gasoline-prices-zone-map#/zone_1"
+    response = requests.get(url)
+    soup = BeautifulSoup(response.text, 'html.parser')
+    price_div = soup.find("div", class_="field field--name-field-zone-1-unleaded-min field--type-string field--label-hidden field__item")
+    if price_div:
+        return price_div.text.strip()
+    else:
+        return None
 
 # Function to create a Gmail service
 def create_gmail_service():
