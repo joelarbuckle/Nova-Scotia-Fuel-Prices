@@ -1,6 +1,6 @@
 steps:
 - name: 'gcr.io/cloud-builders/gcloud'
-  args: ['functions', 'deploy', 'YourFunctionName',
+  args: ['functions', 'deploy', 'ns-fuel-check',
          '--runtime', 'python39',
          '--trigger-topic', 'gas-price-notifier-topic',
          '--source', '.',
