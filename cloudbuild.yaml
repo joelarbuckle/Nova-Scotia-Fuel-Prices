@@ -4,6 +4,6 @@ steps:
          '--runtime', 'python39',
          '--trigger-topic', 'gas-price-notifier-topic',
          '--source', '.',
-         '--entry-point', 'your_entry_point_function',
+         '--entry-point', 'hello_pubsub',
          '--region', 'northamerica-northeast1']
 timeout: '1600s'
