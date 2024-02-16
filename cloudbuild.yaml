@@ -5,5 +5,5 @@ steps:
          '--trigger-topic', 'gas-price-notifier-topic',
          '--source', '.',
          '--entry-point', 'your_entry_point_function',
-         '--region', 'us-central1']
+         '--region', 'northamerica-northeast1']
 timeout: '1600s'
