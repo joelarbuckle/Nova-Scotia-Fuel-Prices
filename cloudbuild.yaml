@@ -1,0 +1,9 @@
+steps:
+- name: 'gcr.io/cloud-builders/gcloud'
+  args: ['functions', 'deploy', 'YourFunctionName',
+         '--runtime', 'python39',
+         '--trigger-topic', 'gas-price-notifier-topic',
+         '--source', '.',
+         '--entry-point', 'your_entry_point_function',
+         '--region', 'us-central1']
+timeout: '1600s'
