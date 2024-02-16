@@ -1,0 +1,7 @@
+requests
+beautifulsoup4
+google-auth
+google-api-python-client
+gspread
+pandas
+python-dateutil
